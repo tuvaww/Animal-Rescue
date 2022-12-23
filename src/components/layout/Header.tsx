@@ -2,7 +2,7 @@ import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import Close from "@mui/icons-material/Close";
 
 import { useState } from "react";
-import "../../styles/Header.scss";
+import "../../styles/layout/Header.scss";
 
 export const Header = () => {
   const [isHovering, setIsHovering] = useState(0);
@@ -11,7 +11,7 @@ export const Header = () => {
     { url: "", name: "Home", id: 1 },
     { url: "", name: "Login", id: 2 },
     { url: "", name: "Register", id: 3 },
-    { url: "", name: "Adopt", id: 4 },
+    { url: "/Adopt", name: "Adopt", id: 4 },
   ];
 
   const handleMouseEnter = (id: number) => {
@@ -71,7 +71,10 @@ export const Header = () => {
       >
         <article className="hamburgerMenuModal">
           <div className="closeMenuButton">
-            <Close onClick={() => handleModalMenu("close")}></Close>
+            <Close
+              sx={{ cursor: "pointer" }}
+              onClick={() => handleModalMenu("close")}
+            ></Close>
           </div>
           {getLinkHTML}
         </article>

@@ -1,0 +1,96 @@
+@import "../mixins/mixins";
+@import "../mixins/variables";
+@import url("https://fonts.googleapis.com/css2?family=Parisienne&display=swap");
+
+.footerContainer {
+  position: relative;
+  bottom: -100px;
+  bottom: 0;
+  z-index: 0;
+  background-color: rgba($purple, 0.3);
+  width: 100vw;
+  height: 290px;
+  display: flex;
+  flex-direction: column;
+
+  padding-top: 50px;
+
+  @include phone-to-tablet {
+    height: 260px;
+  }
+  @include tablet-step2 {
+    height: 230px;
+  }
+
+  .footerInfoContainer {
+    display: flex;
+    flex-direction: column;
+
+    .footerLinksContainer {
+      display: flex;
+      justify-content: space-around;
+      border-top: 1px solid gray;
+      border-bottom: 1px solid gray;
+      padding: 5px 0 5px 0;
+
+      .divider {
+        border-right: 1px solid gray;
+      }
+
+      a {
+        text-decoration: none;
+        color: black;
+        font-size: 11pt;
+
+        &:hover {
+          color: white;
+        }
+      }
+    }
+    .footerInformationContainer {
+      display: flex;
+      justify-content: space-evenly;
+      border-bottom: 1px solid gray;
+      padding-top: 15px;
+      padding-bottom: 15px;
+
+      .footerInformation {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 9pt;
+        width: 30%;
+
+        p {
+          padding: 0;
+          margin: 5px;
+        }
+      }
+      .divider {
+        border-right: 1px solid gray;
+      }
+    }
+  }
+
+  .footerSocialMedia {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    .letsConnectConatiner {
+      display: flex;
+      align-items: center;
+      font-family: "Parisienne", cursive;
+    }
+    .iconsContainer {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .divider {
+      height: 40px;
+      width: 1px;
+      border-right: 1px solid gray;
+    }
+  }
+}
