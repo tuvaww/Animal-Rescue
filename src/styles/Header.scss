@@ -1,0 +1,163 @@
+@import "./mixins/variables";
+@import "./mixins/mixins";
+
+.headerMainContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 150px;
+
+  .headerName {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    h1 {
+      margin: 0;
+      padding: 0;
+      margin-left: 20px;
+      margin-top: 20px;
+    }
+
+    @include tablet {
+      display: flex;
+      justify-content: center;
+    }
+
+    .hamburgerContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      margin-top: 20px;
+      margin-right: 20px;
+
+      .hamburger {
+        width: 35px;
+        height: 5px;
+        border-radius: 10px;
+        background-color: $purple;
+      }
+
+      @include tablet {
+        display: none;
+      }
+    }
+  }
+  .hideMenu {
+    display: none;
+  }
+  .hamburgerMenuModalConatiner {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    position: fixed;
+
+    height: 100vh;
+
+    .hamburgerMenuModal {
+      background-color: white;
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+      z-index: 100;
+      width: 40%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+
+      @include phone-to-tablet {
+        width: 30%;
+      }
+      @include tablet {
+        display: none;
+      }
+      .closeMenuButton {
+        width: 100%;
+        display: flex;
+        justify-content: end;
+        color: $purple;
+      }
+    }
+  }
+
+  .headerLinksConatiner {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .loggedInLinks {
+      display: none;
+      .link {
+        color: $purple;
+        text-decoration: none;
+      }
+
+      @include tablet {
+        display: block;
+        margin-top: 20px;
+
+        margin-right: 15px;
+      }
+
+      @include tablet-step2 {
+        margin-right: 30px;
+      }
+      @include tablet-up {
+        margin-right: 40px;
+      }
+    }
+
+    .mainLinks {
+      display: none;
+
+      @include tablet {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+        margin-left: 15px;
+      }
+      @include tablet-step2 {
+        gap: 30px;
+        margin-left: 30px;
+      }
+      @include tablet-up {
+        gap: 40px;
+        margin-left: 40px;
+      }
+    }
+  }
+}
+
+.hoverHeaderLinkContainer {
+  background-color: $purple;
+  border-radius: 20px;
+  width: 90px;
+  height: 23px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .hoverLink {
+    color: white;
+    text-decoration: none;
+  }
+}
+.headerLinkContainer {
+  width: 90px;
+  height: 23px;
+  border-radius: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .link {
+    color: $purple;
+    text-decoration: none;
+  }
+}

@@ -1,0 +1,35 @@
+[
+  {
+    "id": "1",
+    "type": "Dog",
+    "name": "Alicia",
+    "age": "1",
+    "arrivedAtShelter": "10/11/2021",
+    "price": "20",
+    "description": "Alicia was found in a box when she was a puppy, she had been left at a dumpster. When she arrived at the shelter she was shy and had experienced trauma but has evolved to a happy social dog who loves cuddles and to play with her best firend Hanna at the shelter.",
+    "breed": "Pug",
+    "weight": "5",
+    "isOkWithOtherAnimals": "true",
+    "health": "Alicia is a healthy dog.",
+    "img": [
+      "/assets/Alicia/Alicia1.jpeg",
+      "/assets/Alicia/Alicia2.jpeg",
+      "/assets/Alicia/Alicia3.jpeg"
+    ]
+  },
+
+  {
+    "id": "2",
+    "type": "Dog",
+    "name": "Alicia",
+    "age": "1",
+    "arrivedAtShelter": "10/11/2021",
+    "price": "20",
+    "description": "Alicia was found in a box when she was a puppy, she had been left at a dumpster. When she arrived at the shelter she was shy and had experienced trauma but has evolved to a happy social dog who loves cuddles and to play with her best firend Hanna at the shelter.",
+    "breed": "Pug",
+    "weight": "5",
+    "isOkWithOtherAnimals": "true",
+    "health": "Alicia is a healthy dog.",
+    "img": ["assets/Bert/Bert1.jpeg", "/assets/Bert/Bert2.jpeg"]
+  }
+]

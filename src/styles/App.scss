@@ -1,0 +1,17 @@
+.mainContainer {
+  width: 100%;
+
+  .cardContainer {
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+
+    .cardHeader {
+      padding: 0;
+      margin: 0;
+    }
+  }
+}
