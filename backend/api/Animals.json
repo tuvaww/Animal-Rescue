@@ -11,17 +11,13 @@
     "weight": "5",
     "isOkWithOtherAnimals": "true",
     "health": "Alicia is a healthy dog.",
-    "img": [
-      "/assets/Alicia/Alicia1.jpeg",
-      "/assets/Alicia/Alicia2.jpeg",
-      "/assets/Alicia/Alicia3.jpeg"
-    ]
+    "img": ["Alicia1", "/Alicia2", "/Alicia3"]
   },
 
   {
     "id": "2",
     "type": "Dog",
-    "name": "Alicia",
+    "name": "Bert",
     "age": "1",
     "arrivedAtShelter": "10/11/2021",
     "price": "20",

@@ -4,8 +4,19 @@ require("./database.js");
 const express = require("express");
 const app = express();
 const fs = require("fs");
-//const mongoose = require("mongoose");
 const animalModel = require("./models/Animal");
+
+const animalRoutes = require("./routes/animal.router");
+
+const cors = require("cors");
+const corsOptions = {
+  origin: "*",
+  credentials: true,
+  optionSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
+app.use(animalRoutes);
 
 const PORT = 8000;
 
