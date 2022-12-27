@@ -1,0 +1,41 @@
+@import "../mixins/mixins";
+@import "../mixins/variables";
+
+.animalContainer {
+  width: 40%;
+  box-shadow: $boxShadowSoft;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px;
+
+  &:hover {
+    background-color: rgba(99, 99, 99, 0.2);
+  }
+
+  .nameContainer {
+    width: 100%;
+    padding-left: 30px;
+  }
+
+  .imgContainer {
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    box-shadow: $boxShadowSoft;
+
+    .animalImg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      overflow: hidden;
+      border-radius: 50%;
+    }
+  }
+
+  .infoContainer {
+    width: 100%;
+    padding-left: 30px;
+    font-size: 9pt;
+  }
+}
