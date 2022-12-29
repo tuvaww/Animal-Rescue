@@ -1,0 +1,73 @@
+@import "../mixins/variables";
+
+.selectorContainer {
+  width: 70px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .headerSelector {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    gap: 3px;
+    border-bottom: 1px solid lightgray;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .hideSelectables {
+    display: none;
+  }
+  .selectablesContainer {
+    margin-top: 5px;
+    position: sticky;
+    z-index: 10;
+    width: 120px;
+    max-height: 150px;
+    padding: 10px;
+    background-color: white;
+    box-shadow: $boxShadowSoft;
+    border-radius: 10px;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    cursor: pointer;
+
+    .notSelectedContainer {
+      width: 80%;
+      height: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: white;
+      border-radius: 20px;
+      .notSelected {
+        padding-bottom: 5px;
+        color: black;
+      }
+    }
+
+    .selectedContainer {
+      width: 80%;
+      height: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $purple;
+      border-radius: 20px;
+      .selected {
+        padding-bottom: 5px;
+        color: white;
+      }
+    }
+  }
+}

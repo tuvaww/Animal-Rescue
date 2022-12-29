@@ -11,7 +11,7 @@
     "weight": "5",
     "isOkWithOtherAnimals": "true",
     "health": "Alicia is a healthy dog.",
-    "img": ["Alicia1", "/Alicia2", "/Alicia3"]
+    "img": ["Alicia/Alicia1.jpeg", "Alicia/Alicia2.jpeg", "Alicia/Alicia3.jpeg"]
   },
 
   {
@@ -26,6 +26,6 @@
     "weight": "5",
     "isOkWithOtherAnimals": "true",
     "health": "Alicia is a healthy dog.",
-    "img": ["assets/Bert/Bert1.jpeg", "/assets/Bert/Bert2.jpeg"]
+    "img": ["Bert/Bert1.jpeg", "Bert/Bert2.jpeg"]
   }
 ]

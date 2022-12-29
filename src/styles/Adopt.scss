@@ -1,8 +1,22 @@
 .mainAdoptContainer {
   width: 100%;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+  flex-direction: column;
+
+  .filteringContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .animalCardsContainer {
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
 }
