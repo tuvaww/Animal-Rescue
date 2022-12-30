@@ -1,16 +1,21 @@
 import "../../styles/components/selector.scss";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { PropsFor } from "@mui/system";
 
 interface ISelectorProps {
   name: string;
   listOfSelectables: string[];
+  getFilters: (filters: string[]) => void;
 }
+
 export const Selector = (props: ISelectorProps) => {
   const [openSelectables, setOpenSelectables] = useState(false);
-  const [selectedFilter, setSelectedFilter] = useState([
-    ...props.listOfSelectables,
-  ]);
+  const [selectedFilter, setSelectedFilter] = useState<string[]>([]);
+
+  useEffect(() => {
+    props.getFilters(selectedFilter);
+  }, [selectedFilter]);
 
   const handleSelect = (selected: string, i: number) => {
     if (selectedFilter.includes(selected)) {
@@ -64,6 +69,7 @@ export const Selector = (props: ISelectorProps) => {
       </div>
 
       <div
+        onMouseLeave={() => setOpenSelectables(false)}
         className={` ${
           openSelectables ? "selectablesContainer" : "hideSelectables"
         }`}
