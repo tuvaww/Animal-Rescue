@@ -53,7 +53,7 @@
   .hamburgerMenuModalConatiner {
     width: 100%;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     position: fixed;
     z-index: 100;
 
@@ -78,7 +78,7 @@
       .closeMenuButton {
         width: 100%;
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
         color: $purple;
       }
     }

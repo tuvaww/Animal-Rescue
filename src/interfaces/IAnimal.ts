@@ -12,4 +12,5 @@ export interface IAnimal {
   isOkWithOtherAnimals: string;
   health: string;
   img: Array<string>;
+  gender: String;
 }

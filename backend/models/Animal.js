@@ -7,7 +7,7 @@ const animalSchema = new schema({
   type: String,
   name: String,
   age: Number,
-  arrivedAtShelter: Date,
+  arrivedAtShelter: String,
   price: Number,
   description: String,
   breed: String,
@@ -15,6 +15,7 @@ const animalSchema = new schema({
   isOkWithOtherAnimals: Boolean,
   health: String,
   img: Array,
+  gender: String,
 });
 
 const AnimalModel = mongoose.model("Animals", animalSchema);
