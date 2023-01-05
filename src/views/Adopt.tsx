@@ -1,9 +1,8 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { AnimalCard } from "../components/animals/AnimalCard";
 import { Selector } from "../components/reusables/Selector";
 import { IAnimal } from "../interfaces/IAnimal";
 import "../styles/Adopt.scss";
-import TuneIcon from "@mui/icons-material/Tune";
 
 import { FiltersCount } from "../components/reusables/FiltersCount";
 import { IFilters } from "../interfaces/IFilters";
@@ -24,6 +23,10 @@ export const Adopt = () => {
   useEffect(() => {
     getAnimals();
   }, []);
+
+  useEffect(() => {
+    getAnimalsBySearch();
+  }, [search]);
 
   useEffect(() => {
     let sortByFilters = animals?.filter((a) => {
@@ -107,9 +110,6 @@ export const Adopt = () => {
 
   const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
-    console.log("search", search);
-
-    getAnimalsBySearch();
   };
 
   const getAnimalsBySearch = () => {
@@ -121,50 +121,51 @@ export const Adopt = () => {
     } else {
       setSortedAnimals(searchByName);
     }
-
-    console.log(searchByName);
   };
 
   return (
     <>
       <section className="mainAdoptContainer">
-        <article className="searchContainer">
-          <input
-            onChange={handleSearch}
-            value={search}
-            className="searchBar"
-            id="searchBar"
-            type="text"
-            placeholder="Search by name"
-          />
-        </article>
+        <section className="searchNClearContainer">
+          <article className="searchContainerXS">
+            <input
+              onChange={handleSearch}
+              value={search}
+              className="searchBar"
+              id="searchBar"
+              type="text"
+              placeholder="Search by name"
+            />
+          </article>
 
-        <FiltersCount
-          clearAllFilters={clearAllFilters}
-          filters={filters}
-        ></FiltersCount>
+          <FiltersCount
+            clearAllFilters={clearAllFilters}
+            filters={filters}
+          ></FiltersCount>
+        </section>
+        <section className="outerFilterContainer">
+          <article className="filteringContainer">
+            <Selector
+              clearedFilter={clearFilters}
+              getFilters={getFilters}
+              name="Type"
+              listOfSelectables={["Dog", "Cat", "Rabbit"]}
+            ></Selector>
 
-        <article className="filteringContainer">
-          <Selector
-            clearedFilter={clearFilters}
-            getFilters={getFilters}
-            name="Type"
-            listOfSelectables={["Dog", "Cat", "Rabbit"]}
-          ></Selector>
-
-          <Selector
-            clearedFilter={clearFilters}
-            getFilters={getFilters}
-            name="Size"
-            listOfSelectables={["< 10 kg", "< 20 kg", "> 20 kg"]}
-          ></Selector>
-          <Selector
-            clearedFilter={clearFilters}
-            getFilters={getFilters}
-            name="Gender"
-            listOfSelectables={["Male", "Female"]}
-          ></Selector>
-        </article>
+            <Selector
+              clearedFilter={clearFilters}
+              getFilters={getFilters}
+              name="Size"
+              listOfSelectables={["< 10 kg", "< 20 kg", "> 20 kg"]}
+            ></Selector>
+            <Selector
+              clearedFilter={clearFilters}
+              getFilters={getFilters}
+              name="Gender"
+              listOfSelectables={["Male", "Female"]}
+            ></Selector>
+          </article>
+        </section>
 
         <article className="animalCardsContainer">{animalsHTML}</article>
       </section>

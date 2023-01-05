@@ -8,7 +8,7 @@ export const Header = () => {
   const [isHovering, setIsHovering] = useState(0);
   const [openMenu, setOpenMenu] = useState(false);
   const links = [
-    { url: "", name: "Home", id: 1 },
+    { url: "/", name: "Home", id: 1 },
     { url: "", name: "Login", id: 2 },
     { url: "", name: "Register", id: 3 },
     { url: "/Adopt", name: "Adopt", id: 4 },

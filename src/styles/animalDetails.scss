@@ -1,0 +1,58 @@
+@import "./mixins//variables";
+
+.animalDetailsContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+
+  .nameContainer {
+    width: 100%;
+    padding-left: 20px;
+
+    p {
+      font-weight: bolder;
+      font-size: 15pt;
+      padding: 0;
+      margin: 0;
+      margin-bottom: 15px;
+    }
+  }
+
+  .carouselContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .informartion {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    div {
+      background-color: $yellow;
+      height: 15px;
+      display: inline-block;
+      border-radius: $border-radius;
+      padding: 10px;
+      text-align: center;
+      p {
+        margin: 0;
+        padding: 0;
+      }
+    }
+  }
+
+  .descContainer {
+    width: 80%;
+    background-color: $orange;
+    padding: 20px;
+    border-radius: 20px;
+    margin-top: 20px;
+  }
+}

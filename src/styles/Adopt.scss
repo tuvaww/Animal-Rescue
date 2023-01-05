@@ -1,67 +1,91 @@
 @import "./mixins/variables";
+@import "./mixins/_mixins";
 
 .mainAdoptContainer {
   width: 100%;
   display: flex;
   flex-direction: column;
 
-  .searchContainer {
-    display: flex;
-    flex-direction: column;
-    padding-left: 30px;
+  @include tablet {
+    margin-top: 55px;
+  }
 
-    label {
-      font-size: 10pt;
+  .searchNClearContainer {
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+    }
+    .searchContainerXS {
+      display: flex;
+      flex-direction: column;
+      padding-left: 30px;
+
+      label {
+        font-size: 10pt;
+      }
+
+      .searchBar {
+        padding-left: 10px;
+        border-radius: 20px;
+        box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+          rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+        width: 200px;
+        height: 25px;
+        border: none;
+        font-size: 8pt;
+        color: black;
+
+        &:focus {
+          outline: none;
+          box-shadow: $purple 0px 2px 4px 0px, $purple 0px 2px 16px 0px;
+        }
+      }
     }
 
-    .searchBar {
-      padding-left: 10px;
-      border-radius: 20px;
-      box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
-        rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-      width: 200px;
-      height: 25px;
-      //      border: 1px solid grey;
-      border: none;
-      font-size: 8pt;
-      color: black;
+    .filterIconContainer {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      position: relative;
 
-      &:focus {
-        outline: none;
-        box-shadow: $purple 0px 2px 4px 0px, $purple 0px 2px 16px 0px;
-        //        box-shadow: $purple 0px 2px 4px 0px;
+      .filterCount {
+        border-radius: 50%;
+        height: 10px;
+        width: 10px;
+        font-size: 6pt;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid $purple;
+        position: absolute;
+        margin-right: 20px;
+        top: -7px;
       }
     }
   }
-
-  .filterIconContainer {
+  .outerFilterContainer {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    position: relative;
 
-    .filterCount {
-      border-radius: 50%;
-      height: 10px;
-      width: 10px;
-      font-size: 6pt;
+    @include tablet {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid $purple;
-      position: absolute;
-      margin-right: 20px;
-      top: -7px;
+      justify-content: flex-end;
     }
-  }
+    .filteringContainer {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
 
-  .filteringContainer {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    padding: 0 40px 0 0;
+      @include tablet {
+        width: 50%;
+        padding: 0 20px 0 0;
+      }
+
+      @include desktop-up {
+        width: 30%;
+      }
+    }
   }
 
   .animalCardsContainer {

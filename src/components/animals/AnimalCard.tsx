@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { IAnimal } from "../../interfaces/IAnimal";
 import "../../styles/animals/animalCard.scss";
 import { AnimalHoverModal } from "./AnimalHoverModal";
@@ -8,6 +9,8 @@ interface IAnimalCardProps {
 }
 export const AnimalCard = (props: IAnimalCardProps) => {
   const [openHoverModal, setOpenhoverModal] = useState(false);
+  const navigate = useNavigate();
+
   const handleHover = () => {
     let interval = setInterval(() => {
       setOpenhoverModal(true);
@@ -18,8 +21,11 @@ export const AnimalCard = (props: IAnimalCardProps) => {
   const handleMouseLeave = () => {
     setOpenhoverModal(false);
   };
+
+  const showAnimalDetails = () => {};
   return (
     <section
+      onClick={() => navigate(`/Adopt/${props.animal.id}`)}
       onMouseEnter={handleHover}
       onMouseLeave={handleMouseLeave}
       className="animalContainer"
