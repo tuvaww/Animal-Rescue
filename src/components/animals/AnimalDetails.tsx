@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { IAnimal } from "../../interfaces/IAnimal";
 import { ImageCarousel } from "../reusables/ImageCarousel";
-import "../../styles/animalDetails.scss";
+import "../../styles/animals/animalDetails.scss";
 
 export const AnimalDetails = () => {
   const { id } = useParams();
@@ -25,10 +25,11 @@ export const AnimalDetails = () => {
       <ImageCarousel
         imgUrl={animal?.img.length ? animal?.img : []}
       ></ImageCarousel>
-
+      {/*       <section className="detailsContainer">
+       */}{" "}
       <article className="informartion">
         <div>
-          <p>{animal?.age} year</p>
+          <p>{animal?.age} years</p>
         </div>
         <div>
           <p> {animal?.breed}</p>
@@ -52,6 +53,8 @@ export const AnimalDetails = () => {
       <article className="descContainer">
         <span>{animal?.description}</span>
       </article>
+      {/*       </section>
+       */}{" "}
     </section>
   );
 };

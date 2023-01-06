@@ -22,7 +22,6 @@ export const AnimalCard = (props: IAnimalCardProps) => {
     setOpenhoverModal(false);
   };
 
-  const showAnimalDetails = () => {};
   return (
     <section
       onClick={() => navigate(`/Adopt/${props.animal.id}`)}

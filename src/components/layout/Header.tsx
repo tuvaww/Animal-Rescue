@@ -88,7 +88,7 @@ export const Header = () => {
 
         <article className="loggedInLinks">
           <div className="headerLinkContainer">
-            <a href="" className="link">
+            <a href="/Schedule" className="link">
               Schedule
             </a>
           </div>

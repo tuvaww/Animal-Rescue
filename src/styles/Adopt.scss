@@ -5,6 +5,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  margin-bottom: 100px;
 
   @include tablet {
     margin-top: 55px;

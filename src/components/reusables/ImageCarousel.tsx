@@ -22,21 +22,17 @@ export const ImageCarousel = (props: IImageCarouselProps) => {
   const Root = styled("div")(({ theme }) => ({
     [theme.breakpoints.up("xs")]: {
       width: "100vw",
-      height: "280px",
     },
     [theme.breakpoints.up("sm")]: {
       width: "80vw",
-      height: "300px",
     },
     [theme.breakpoints.up("md")]: {
-      width: "60vw",
-      height: "400px",
+      width: "70vw",
     },
 
-    [theme.breakpoints.up("lg")]: {
-      width: "30vw",
-      height: "500px",
-    },
+    /*  [theme.breakpoints.up("lg")]: {
+      width: "70vw",
+    }, */
   }));
 
   return (

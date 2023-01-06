@@ -6,7 +6,7 @@
     "age": "1",
     "arrivedAtShelter": "10/11/2021",
     "price": "200",
-    "description": "Alicia was found in a box when she was a puppy, she had been left at a dumpster. When she arrived at the shelter she was shy and had experienced trauma but has evolved to a happy social dog who loves cuddles and to play with her best firend Hanna at the shelter.",
+    "description": "Alicia was found in a box when she was a puppy, she had been left at a dumpster. When she arrived at the shelter she was shy and had experienced trauma but has evolved to a happy social dog who loves cuddles and to play with her best firend Hanna at the shelter. She is the most precious dog you could find, book a meeting with Alicia to se for yourself.",
     "breed": "Pug",
     "weight": "5",
     "isOkWithOtherAnimals": "true",
@@ -26,7 +26,7 @@
     "age": "1",
     "arrivedAtShelter": "10/11/2021",
     "price": "200",
-    "description": "Bert is the sweetest boy and loves to play with everybody and take naps in the sun.",
+    "description": "Bert is the sweetest boy and loves to play with everybody and take naps in the sun. He loves to dig holes in the yard and to bite Alicia in the tail. Bert has no problem with children and would fit a family with children. He likes when things happens around him and is always there to see what's going on.",
     "breed": "Chihuahua",
     "weight": "3",
     "isOkWithOtherAnimals": "true",
@@ -41,11 +41,11 @@
     "age": "10",
     "arrivedAtShelter": "07/09/2017",
     "price": "100",
-    "description": "Hank is a lovely boy who has not been so lucky with life but still loved everybody and has lots of energi.",
+    "description": "Hank is a lovely boy who has not been so lucky with life but still loves everybody and has lots of energi. He is starting to get a little bit old, he has lots of energy left but would fit someone with a big house and a backyard perfect so he can go out whenever he likes to.",
     "breed": "Labradoodle",
     "weight": "34",
     "isOkWithOtherAnimals": "true",
-    "health": "Hank is a healthy dog but he is starting to get a little bit old",
+    "health": "Hank is a healthy dog.",
     "img": ["Hank/Hank1.jpeg", "Hank/Hank2.jpeg", "Hank/Hank3.jpeg"],
     "gender": "Male"
   },
@@ -56,7 +56,7 @@
     "age": "7",
     "arrivedAtShelter": "01/08/2020",
     "price": "10",
-    "description": "Iris is a little diva who loves to prank all the animals on the shelter.",
+    "description": "Iris is a little diva who loves to prank all the animals on the shelter. She is a healthy little cat who loves to play with her toys and the other animals at the shelter. She likes to run freely around as an outdoor cat and is always back for a snack and to sleep.",
     "breed": "Bobmey",
     "weight": "4",
     "isOkWithOtherAnimals": "true",
@@ -71,12 +71,12 @@
     "age": "11",
     "arrivedAtShelter": "01/08/2021",
     "price": "8",
-    "description": "Gustav loves to sleep and eat.",
+    "description": "Gustav loves to sleep and eat. He is really like the character Gustav, therefore the name. He is a little grumpy and is most of his time by himself. He would love a home where he get all the attention and food for himself.",
     "breed": "Oriental",
     "weight": "8",
     "isOkWithOtherAnimals": "false",
     "health": "Gustav has a heartproblem.",
-    "img": ["Gustav/Gustav1.jpeg", "Gustav/Gustav2.jpeg"],
+    "img": ["Gustav/Gustav1.webp", "Gustav/Gustav2.jpeg"],
     "gender": "Male"
   },
   {
@@ -86,7 +86,7 @@
     "age": "10",
     "arrivedAtShelter": "01/10/2022",
     "price": "10",
-    "description": "Oscar is a gentleman who always has an eye on the female dogs. He loves cuddles and is getting old so he would really love to find a forever home where he can relax the rest of his time.",
+    "description": "Oscar is a gentleman who always has an eye on the female dogs. He loves cuddles but is getting old so he would really love to find a forever home where he can relax the rest of his time with lots of love and food.",
     "breed": "Chihuahua",
     "weight": "3",
     "isOkWithOtherAnimals": "true",
@@ -126,7 +126,7 @@
     "weight": "13",
     "isOkWithOtherAnimals": "false",
     "health": "Douglas has a problem with one of his legs.",
-    "img": ["Douglas/Douglas1.jpeg", "Douglas/Douglas2.jpeg"],
+    "img": ["Douglas/Douglas1.jpeg", "Douglas/Douglas2.webp"],
     "gender": "Male"
   },
   {
@@ -156,7 +156,7 @@
     "weight": "6",
     "isOkWithOtherAnimals": "true",
     "health": "Treo is healthy.",
-    "img": ["Treo/Treo1.jpeg", "Treo/Treo2.jpeg, Treo/Treo3.jpeg"],
+    "img": ["Treo/Treo1.jpeg", "Treo/Treo2.jpeg", "Treo/Treo3.jpeg"],
     "gender": "Male"
   },
   {
@@ -186,7 +186,7 @@
     "weight": "35",
     "isOkWithOtherAnimals": "true",
     "health": "Sully is healthy.",
-    "img": ["Sully/Sully1.jpeg", "Sully/Sully2.jpeg, Sully/Sully3.jpeg"],
+    "img": ["Sully/Sully1.jpeg", "Sully/Sully2.jpeg", "Sully/Sully3.jpeg"],
     "gender": "Male"
   },
   {
@@ -211,12 +211,12 @@
     "age": "2",
     "arrivedAtShelter": "20/06/2022",
     "price": "5",
-    "description": "Petunia loves to dig holes and eat carrots.",
+    "description": "Petunia loves to dig holes and eat carrots. She loves her best friend Sir and they always dig holes and sleep together.",
     "breed": "Rabbit",
     "weight": "1",
     "isOkWithOtherAnimals": "true",
     "health": "Petunia is healthy.",
-    "img": ["Petunia/Petunia1.jpeg", "Petunia/Petunia2.jpeg"],
+    "img": ["Petunia/Petunia1.webp", "Petunia/Petunia2.png"],
     "gender": "Female"
   }
 ]
