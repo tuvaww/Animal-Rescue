@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import "../../styles/components/calender.scss";
 export const Calender = () => {
   const months = [
     "Jan",
@@ -20,6 +20,7 @@ export const Calender = () => {
   const [weekDaysInOrder, setWeekDaysInOrder] = useState<String[]>([]);
 
   const [month, setMonth] = useState("");
+  const [monthAsNumber, setMonthAsNumber] = useState(0);
   const [year, setYear] = useState(0);
 
   const [startWeekDay, setStartWeekDay] = useState("");
@@ -30,10 +31,12 @@ export const Calender = () => {
 
   const [allDaysOfMonth, setAllDaysOfMonth] = useState<number[]>([]);
 
+  console.log("startWeekDay", startWeekDay);
+
   useEffect(() => {
     getCurrentDate();
     getAllDaysOfTheMonth();
-  }, []);
+  }, [month]);
 
   useEffect(() => {
     getAllDaysOfTheMonth();
@@ -60,6 +63,8 @@ export const Calender = () => {
       newOrder.push(...removeRemovedDays);
       newOrder.push(...removeToIndex);
       setWeekDaysInOrder(newOrder);
+    } else {
+      setWeekDaysInOrder(copyWeekDays);
     }
   };
 
@@ -80,17 +85,16 @@ export const Calender = () => {
     let currentMonth = months[getCurrentMonth];
 
     setMonth(currentMonth);
-
+    setMonthAsNumber(getCurrentMonth);
     let getCurrentYear = date.getFullYear();
     setYear(getCurrentYear);
 
-    let startDate = new Date(year, +month, 1);
+    let startDate = new Date(year, monthAsNumber, 1);
     let firstWeekDay = startDate.toString().slice(0, -63);
 
     setStartWeekDay(firstWeekDay);
-    console.log(startDate);
 
-    let lastDate = new Date(year, +month + 1, 0);
+    let lastDate = new Date(year, monthAsNumber + 1, 0);
     let lastWeekDay = lastDate.toString().slice(0, -63);
     setEndWeekDay(lastWeekDay);
 
@@ -106,13 +110,24 @@ export const Calender = () => {
     );
   });
 
+  const daysInMonthHtml = allDaysOfMonth.map((d, i) => {
+    return (
+      <div className="dayInMonth" key={i}>
+        <p>{d}</p>
+      </div>
+    );
+  });
+
   return (
     <section className="caldendarContainer">
-      <article className="monthNYear">
-        {month} {year}
-      </article>
-      <article className="nameOfDays">{WeekDaysHtml}</article>
-      <article className="daysDisplayed"></article>
+      <section className="calender">
+        <article className="monthNYear">
+          <p>{month}</p>
+          <p>{year}</p>
+        </article>
+        <article className="nameOfDays">{WeekDaysHtml}</article>
+        <article className="daysDisplayed">{daysInMonthHtml}</article>
+      </section>
     </section>
   );
 };
