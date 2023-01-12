@@ -1,3 +1,5 @@
+@import "../mixins/variables";
+
 .scheduleMainContainer {
   margin-bottom: 100px;
   .headerContainer {
@@ -5,7 +7,7 @@
     margin-bottom: 50px;
 
     p {
-      font-size: 15pt;
+      font-size: $mediumHeader;
     }
   }
 }

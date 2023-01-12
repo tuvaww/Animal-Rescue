@@ -1,14 +1,13 @@
 import React from "react";
 
-import "./styles/App.scss";
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { MainLayout } from "./components/layout/MainLayout";
 import { Home } from "./views/Home";
 import { Adopt } from "./views/Adopt";
 import { AnimalDetails } from "./components/animals/AnimalDetails";
 import { Schedule } from "./views/Schedule";
-
+import { Register } from "./views/Register";
+import { Login } from "./views/Login";
 function App() {
   return (
     <BrowserRouter>
@@ -18,6 +17,8 @@ function App() {
           <Route path="/Adopt" element={<Adopt />}></Route>
           <Route path="/Adopt/:id" element={<AnimalDetails />}></Route>
           <Route path="/Schedule" element={<Schedule />}></Route>
+          <Route path="/Register" element={<Register />}></Route>
+          <Route path="/Login" element={<Login />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>

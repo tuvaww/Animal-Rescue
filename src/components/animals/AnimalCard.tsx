@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IAnimal } from "../../interfaces/IAnimal";
-import "../../styles/animals/animalCard.scss";
-import { AnimalHoverModal } from "./AnimalHoverModal";
+import "../../styles/components/animals/animalCard.scss";
 
 interface IAnimalCardProps {
   animal: IAnimal;

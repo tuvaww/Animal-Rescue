@@ -1,5 +1,5 @@
 import { Calender } from "../components/schedule/Calender";
-import "../styles/schedule.scss";
+import "../styles/views/schedule.scss";
 
 export const Schedule = () => {
   return (

@@ -1,5 +1,5 @@
-@import "./mixins/variables";
-@import "./mixins/_mixins";
+@import "../mixins/variables";
+@import "../mixins/_mixins";
 
 .mainAdoptContainer {
   width: 100%;
@@ -12,18 +12,16 @@
   }
 
   .searchNClearContainer {
+    width: 100%;
     @include tablet {
       display: flex;
       flex-direction: row;
     }
-    .searchContainerXS {
+
+    .searchContainer {
       display: flex;
       flex-direction: column;
       padding-left: 30px;
-
-      label {
-        font-size: 10pt;
-      }
 
       .searchBar {
         padding-left: 10px;
@@ -35,6 +33,10 @@
         border: none;
         font-size: 8pt;
         color: black;
+
+        @include desktop {
+          width: 300px;
+        }
 
         &:focus {
           outline: none;

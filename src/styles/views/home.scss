@@ -1,5 +1,5 @@
-@import "./mixins/variables";
-@import "./mixins/mixins";
+@import "../mixins/variables";
+@import "../mixins/mixins";
 
 .mainContainer {
   display: flex;
@@ -13,7 +13,7 @@
     justify-content: center;
 
     @include tablet {
-      background-image: url("../assets/HeroImg/Hero.webp");
+      background-image: url("../../assets/HeroImg/Hero.webp");
       background-repeat: no-repeat;
       background-attachment: fixed;
       background-position: center;

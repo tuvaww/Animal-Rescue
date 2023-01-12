@@ -2,7 +2,7 @@ import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { AnimalCard } from "../components/animals/AnimalCard";
 import { Selector } from "../components/reusables/Selector";
 import { IAnimal } from "../interfaces/IAnimal";
-import "../styles/Adopt.scss";
+import "../styles/views/adopt.scss";
 
 import { FiltersCount } from "../components/reusables/FiltersCount";
 import { IFilters } from "../interfaces/IFilters";
@@ -127,7 +127,7 @@ export const Adopt = () => {
     <>
       <section className="mainAdoptContainer">
         <section className="searchNClearContainer">
-          <article className="searchContainerXS">
+          <article className="searchContainer">
             <input
               onChange={handleSearch}
               value={search}

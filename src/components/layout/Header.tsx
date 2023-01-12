@@ -9,8 +9,8 @@ export const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const links = [
     { url: "/", name: "Home", id: 1 },
-    { url: "", name: "Login", id: 2 },
-    { url: "", name: "Register", id: 3 },
+    { url: "/Login", name: "Login", id: 2 },
+    { url: "/Register", name: "Register", id: 3 },
     { url: "/Adopt", name: "Adopt", id: 4 },
   ];
 

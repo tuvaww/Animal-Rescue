@@ -3,10 +3,12 @@ require("./database.js");
 
 const express = require("express");
 const app = express();
+const bodyParser = require("body-parser");
+
 const fs = require("fs");
 const animalModel = require("./models/Animal");
-
 const animalRoutes = require("./routes/animal.router");
+const accountRoutes = require("./routes/account.router");
 
 const cors = require("cors");
 const corsOptions = {
@@ -16,7 +18,10 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+app.use(bodyParser.json());
+
 app.use(animalRoutes);
+app.use("/account", accountRoutes);
 
 const PORT = 8000;
 

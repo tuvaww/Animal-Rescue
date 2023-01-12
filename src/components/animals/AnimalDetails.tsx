@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { IAnimal } from "../../interfaces/IAnimal";
 import { ImageCarousel } from "../reusables/ImageCarousel";
-import "../../styles/animals/animalDetails.scss";
+import "../../styles/components/animals/animalDetails.scss";
 
 export const AnimalDetails = () => {
   const { id } = useParams();

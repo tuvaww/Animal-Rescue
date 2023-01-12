@@ -1,4 +1,4 @@
-import "../styles/Home.scss";
+import "../styles/views/home.scss";
 import PetsIcon from "@mui/icons-material/Pets";
 import SavingsIcon from "@mui/icons-material/Savings";
 import { AnimalFastView } from "../components/animals/AnimalFastView";
