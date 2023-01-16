@@ -1,16 +1,26 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "../styles/layout/form.scss";
+import { add } from "../redux/features/SessionSlice";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const [startLoader, setStartLoader] = useState(false);
   const [isWrongData, setIsWrongData] = useState(false);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    setIsWrongData(false);
+  }, [email, password]);
 
   const submitForm = async () => {
+    setStartLoader(true);
+
     const rawResponse = await fetch("http://localhost:8000/account/login", {
       method: "POST",
       headers: {
@@ -20,11 +30,28 @@ export const Login = () => {
       },
       body: JSON.stringify({ email, password }),
     });
+
+    const data = await rawResponse.json();
+
     if (rawResponse.status === 200) {
-      navigate("/Schedule");
+      setTimeout(() => {
+        setStore(data.token);
+
+        setStartLoader(false);
+        setEmail("");
+        setPassword("");
+        navigate("/Schedule");
+      }, 1800);
     } else {
-      setIsWrongData(true);
+      setTimeout(() => {
+        setStartLoader(false);
+        setIsWrongData(true);
+      }, 1500);
     }
+  };
+
+  const setStore = (data: string) => {
+    dispatch(add(data));
   };
 
   const handleEmail = (e: ChangeEvent<HTMLInputElement>) => {
@@ -41,11 +68,17 @@ export const Login = () => {
       </div>
 
       <form onSubmit={(e) => e.preventDefault()}>
+        <span className={`${startLoader ? "loader" : "hide"}`}></span>
+
         <p>Login</p>
+        <span className={`${isWrongData ? "errorMessage" : "hide"}`}>
+          Email or password is wrong
+        </span>
 
         <div className="divider">
           <label htmlFor="mail">Email:</label>
           <input
+            className={`${isWrongData && "errorInput"}`}
             type="email"
             id="mail"
             placeholder="Email..."
@@ -57,6 +90,7 @@ export const Login = () => {
         <div className="divider">
           <label htmlFor="password">Password:</label>
           <input
+            className={`${isWrongData && "errorInput"}`}
             type="password"
             id="password"
             placeholder="Password..."
@@ -65,7 +99,11 @@ export const Login = () => {
         </div>
 
         <div className="buttonContainer">
-          <button type="submit" onClick={submitForm}>
+          <button
+            disabled={!email || !password}
+            type="submit"
+            onClick={submitForm}
+          >
             Create
           </button>
         </div>

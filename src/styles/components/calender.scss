@@ -56,9 +56,24 @@
         justify-content: center;
         align-items: center;
         border-radius: 20px;
+        position: relative;
 
-        &:hover {
+        /*  &:hover {
           background-color: $purple;
+        } */
+
+        .bookDay {
+          position: absolute;
+          border-radius: 50%;
+          border: 1px solid green;
+          width: 15px;
+          height: 15px;
+          top: -3px;
+          right: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: green;
         }
       }
     }

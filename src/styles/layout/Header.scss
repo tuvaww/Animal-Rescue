@@ -20,6 +20,17 @@
       padding: 0;
       margin-left: 20px;
       margin-top: 20px;
+
+      @include tablet {
+        margin-left: 0;
+        font-size: 25pt;
+      }
+      @include tablet-up {
+        font-size: 27pt;
+      }
+      @include desktop {
+        font-size: 30pt;
+      }
     }
 
     @include tablet {
@@ -92,23 +103,36 @@
 
     .loggedInLinks {
       display: none;
-      .link {
-        color: $purple;
-        text-decoration: none;
-      }
 
       @include tablet {
-        display: block;
-        margin-top: 20px;
-
-        margin-right: 15px;
+        margin-top: 40px;
+        display: flex;
+        flex-direction: row;
+        gap: 1px;
+        margin-right: 1px;
       }
 
       @include tablet-step2 {
-        margin-right: 30px;
+        font-size: 14pt;
+
+        gap: 5px;
+        margin-right: 5px;
       }
-      @include tablet-up {
+      @include desktop {
+        font-size: 15pt;
+
         margin-right: 40px;
+        gap: 40px;
+      }
+      @include desktop-up {
+        font-size: 16pt;
+        margin-right: 60px;
+        gap: 60px;
+      }
+
+      .link {
+        color: $purple;
+        text-decoration: none;
       }
     }
 
@@ -116,19 +140,28 @@
       display: none;
 
       @include tablet {
-        margin-top: 20px;
+        margin-top: 40px;
         display: flex;
         flex-direction: row;
-        gap: 15px;
-        margin-left: 15px;
+        gap: 1px;
+        margin-left: 1px;
       }
       @include tablet-step2 {
-        gap: 30px;
-        margin-left: 30px;
+        font-size: 14pt;
+
+        gap: 5px;
+        margin-left: 5px;
       }
-      @include tablet-up {
+      @include desktop {
+        font-size: 15pt;
+
         gap: 40px;
         margin-left: 40px;
+      }
+      @include desktop-up {
+        font-size: 16pt;
+        margin-left: 60px;
+        gap: 60px;
       }
     }
   }
@@ -147,6 +180,11 @@
     color: white;
     text-decoration: none;
   }
+
+  @include tablet-step2 {
+    width: 100px;
+    padding: 1px;
+  }
 }
 .headerLinkContainer {
   width: 90px;
@@ -157,8 +195,17 @@
   justify-content: center;
   align-items: center;
 
+  @include tablet-step2 {
+    width: 100px;
+    padding: 1px;
+  }
+
   .link {
     color: $purple;
     text-decoration: none;
   }
+}
+
+.hide {
+  display: none;
 }

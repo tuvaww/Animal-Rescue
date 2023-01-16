@@ -20,6 +20,9 @@ export const Register = () => {
   const [validateLenghtPassword, setValidateLengthPassword] = useState(false);
   const [submit, setSubmit] = useState(false);
 
+  const [emailAlreadyExist, setEmailAlreadyExist] = useState(false);
+  const [startLoader, setStartLoader] = useState(false);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -81,6 +84,7 @@ export const Register = () => {
   const submitForm = async () => {
     validateLength();
     setSubmit(true);
+    setStartLoader(true);
 
     if (
       validateLengthFN &&
@@ -91,8 +95,6 @@ export const Register = () => {
       emailsMatch &&
       emailIsCorrect
     ) {
-      navigate("/Login");
-
       const rawResponse = await fetch(
         "http://localhost:8000/account/create-user",
         {
@@ -105,6 +107,18 @@ export const Register = () => {
           body: JSON.stringify({ firstName, lastName, email, password }),
         }
       );
+
+      if (rawResponse.status === 200) {
+        setTimeout(() => {
+          setStartLoader(false);
+          navigate("/Login");
+        }, 1800);
+      } else {
+        setTimeout(() => {
+          setStartLoader(false);
+          setEmailAlreadyExist(true);
+        }, 1500);
+      }
     }
   };
 
@@ -135,7 +149,12 @@ export const Register = () => {
 
       <form onSubmit={(e) => e.preventDefault()}>
         <p>Register</p>
+        <span className={`${startLoader ? "loader" : "hide"}`}></span>
 
+        <span className={`${emailAlreadyExist ? "errorMessage" : "hide"}`}>
+          Email is already in use, try to login instead:{" "}
+          <a href="/Login">LOGIN</a>
+        </span>
         <div className="divider">
           <label htmlFor="fn">First name:</label>
           <input
@@ -181,7 +200,8 @@ export const Register = () => {
             id="repeatEmail"
             placeholder="Email..."
             className={`${
-              !validateLengthRepeatEmail && submit && "errorInput"
+              emailAlreadyExist ||
+              (!validateLengthRepeatEmail && submit && "errorInput")
             }`}
           />
         </div>
@@ -198,7 +218,13 @@ export const Register = () => {
         </div>
 
         <div className="buttonContainer">
-          <button type="submit" onClick={submitForm}>
+          <button
+            type="submit"
+            onClick={submitForm}
+            disabled={
+              !email || !password || !firstName || !lastName || !repeatEmail
+            }
+          >
             Create
           </button>
         </div>

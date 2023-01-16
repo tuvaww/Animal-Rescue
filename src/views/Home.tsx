@@ -15,8 +15,7 @@ export const Home = () => {
     <main className="mainContainer">
       <section className="mainContent">
         <Header></Header>
-        {/*       <section className="animalsForAdoptionContainer">{fastViewHtml}</section>
-         */}{" "}
+        <section className="homePageImage"></section>
         <section className="cardMainContainer">
           <article className="cardContainer">
             <h5 className="cardHeader">About us</h5>

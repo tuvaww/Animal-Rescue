@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { IBooking } from "../../interfaces/IBooking";
 import "../../styles/components/calender.scss";
 export const Calender = () => {
   const months = [
@@ -31,7 +32,7 @@ export const Calender = () => {
 
   const [allDaysOfMonth, setAllDaysOfMonth] = useState<number[]>([]);
 
-  console.log("startWeekDay", startWeekDay);
+  const [bookingsForMonth, setBookingsForMonth] = useState<IBooking[]>([]);
 
   useEffect(() => {
     getCurrentDate();
@@ -45,6 +46,12 @@ export const Calender = () => {
   useEffect(() => {
     getWeekDaysInOrderByMonth();
   }, [startWeekDay]);
+
+  useEffect(() => {
+    if (month && year) {
+      getAllBookingsForCurrentMonth();
+    }
+  }, [month, year]);
 
   const getWeekDaysInOrderByMonth = () => {
     let copyWeekDays = [...weekDays];
@@ -102,6 +109,38 @@ export const Calender = () => {
     setLastDayOfMonth(lastDateDay);
   };
 
+  const getAllBookingsForCurrentMonth = async () => {
+    const rawResponse = await fetch(
+      "http://localhost:8000/bookings/Get-bookings",
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          mode: "no-cors",
+        },
+        body: JSON.stringify({ month, year }),
+      }
+    );
+
+    const data = await rawResponse.json();
+    setBookingsForMonth(data);
+  };
+
+  const addBooking = async (day: string) => {
+    const loggedInUser = sessionStorage.getItem("User");
+
+    await fetch("http://localhost:8000/bookings/Book", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        mode: "no-cors",
+      },
+      body: JSON.stringify({ user: loggedInUser, year, month, day }),
+    });
+  };
+
   const WeekDaysHtml = weekDaysInOrder.map((d, i) => {
     return (
       <div key={i} className="nameOfDay">
@@ -110,14 +149,15 @@ export const Calender = () => {
     );
   });
 
-  const daysInMonthHtml = allDaysOfMonth.map((d, i) => {
-    return (
-      <div className="dayInMonth" key={i}>
-        <p>{d}</p>
-      </div>
-    );
+  /*   const daysInMonthHtml = bookingsForMonth?.map((b) => {
+    allDaysOfMonth.map((d, i) => {
+      console.log(b.month);
+  +b.day === d ? return( <div className="dayInMonth" key={i}>   <div onClick={() => addBooking(d.toString())} className="bookDay">   +  </div>  <p>{d}</p> </div>) : return (  <div className="dayInMonth" key={i}> <p>{d}</p>   </div>  ) 
+      
+    });
   });
 
+  console.log(bookingsForMonth); */
   return (
     <section className="caldendarContainer">
       <section className="calender">
@@ -126,7 +166,7 @@ export const Calender = () => {
           <p>{year}</p>
         </article>
         <article className="nameOfDays">{WeekDaysHtml}</article>
-        <article className="daysDisplayed">{daysInMonthHtml}</article>
+        <article className="daysDisplayed">{}</article>
       </section>
     </section>
   );

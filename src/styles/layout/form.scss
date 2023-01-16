@@ -18,21 +18,46 @@
   }
   form {
     width: 200px;
-
+    position: relative;
     padding: 20px;
+    margin-top: 30px;
     box-shadow: $boxShadowSoft;
     border-radius: $border-radius;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 25px;
 
     p {
-      margin: 0 0 5px 0;
+      margin: 0;
+    }
+
+    .errorMessage {
+      font-size: 8pt;
+      color: rgb(222, 23, 23);
+    }
+
+    .hide {
+      display: none;
+    }
+
+    .loader {
+      width: 48px;
+      height: 48px;
+      border: 5px solid $pink;
+      border-bottom-color: transparent;
+      border-radius: 50%;
+      display: inline-block;
+      box-sizing: border-box;
+      animation: rotation 1s linear infinite;
+      position: absolute;
+      top: 50%;
+      margin-top: -48px;
     }
 
     .divider {
       display: inline-block;
+
       label {
         margin: 0;
         padding: 0;
@@ -97,5 +122,14 @@
         box-shadow: $boxShadowSoft;
       }
     }
+  }
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

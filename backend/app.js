@@ -9,6 +9,7 @@ const fs = require("fs");
 const animalModel = require("./models/Animal");
 const animalRoutes = require("./routes/animal.router");
 const accountRoutes = require("./routes/account.router");
+const bookingsRoutes = require("./routes/bookings.router");
 
 const cors = require("cors");
 const corsOptions = {
@@ -22,6 +23,7 @@ app.use(bodyParser.json());
 
 app.use(animalRoutes);
 app.use("/account", accountRoutes);
+app.use("/bookings", bookingsRoutes);
 
 const PORT = 8000;
 

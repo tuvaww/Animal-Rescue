@@ -1,18 +1,40 @@
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import Close from "@mui/icons-material/Close";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../../styles/layout/Header.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { IState } from "../../redux/models/IState";
 
 export const Header = () => {
   const [isHovering, setIsHovering] = useState(0);
   const [openMenu, setOpenMenu] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const token = useSelector((state: IState) => state.session.value);
+
+  const dispatch = useDispatch();
+
   const links = [
     { url: "/", name: "Home", id: 1 },
     { url: "/Login", name: "Login", id: 2 },
     { url: "/Register", name: "Register", id: 3 },
     { url: "/Adopt", name: "Adopt", id: 4 },
+    { url: "/Schedule", name: "Schedule", id: 5 },
   ];
+
+  const loggedInLinks = [
+    { url: "/Donate", name: "Donate", id: 6 },
+    { url: "/Account", name: "Account", id: 7 },
+  ];
+
+  useEffect(() => {
+    if (token) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, [token]);
 
   const handleMouseEnter = (id: number) => {
     setIsHovering(id);
@@ -30,6 +52,28 @@ export const Header = () => {
   };
 
   const getLinkHTML = links.map((link) => {
+    return (
+      <div
+        onMouseEnter={() => handleMouseEnter(link.id)}
+        onMouseLeave={handleMouseLeave}
+        className={`${
+          isHovering === link.id
+            ? "hoverHeaderLinkContainer"
+            : "headerLinkContainer"
+        } `}
+        key={link.id}
+      >
+        <a
+          href={link.url}
+          className={`${isHovering === link.id ? "hoverLink" : "link"} `}
+        >
+          {link.name}
+        </a>
+      </div>
+    );
+  });
+
+  const getLoggedInLinksHTML = loggedInLinks.map((link) => {
     return (
       <div
         onMouseEnter={() => handleMouseEnter(link.id)}
@@ -77,6 +121,7 @@ export const Header = () => {
             ></Close>
           </div>
           {getLinkHTML}
+          {getLoggedInLinksHTML}
         </article>
       </section>
       {/*   <ShoppingBasketIcon
@@ -86,12 +131,8 @@ export const Header = () => {
       <section className="headerLinksConatiner">
         <article className="mainLinks">{getLinkHTML}</article>
 
-        <article className="loggedInLinks">
-          <div className="headerLinkContainer">
-            <a href="/Schedule" className="link">
-              Schedule
-            </a>
-          </div>
+        <article className={`${isLoggedIn ? "loggedInLinks" : "hide"}`}>
+          {getLoggedInLinksHTML}
         </article>
       </section>
     </header>

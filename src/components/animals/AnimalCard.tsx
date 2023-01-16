@@ -42,11 +42,6 @@ export const AnimalCard = (props: IAnimalCardProps) => {
         <p>Age: {props.animal.age}</p>
         <p>Price: {props.animal.price}</p>
       </div>
-
-      {/* <AnimalHoverModal
-        show={openHoverModal}
-        animal={props.animal}
-      ></AnimalHoverModal> */}
     </section>
   );
 };
