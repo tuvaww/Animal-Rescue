@@ -1,4 +1,5 @@
 @import "../mixins/variables";
+@import "../mixins/mixins";
 
 .formMainContainer {
   margin-bottom: 100px;
@@ -9,11 +10,27 @@
 
   .headerContainer {
     width: 100%;
-    padding-left: 20px;
-    font-size: 20pt;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+
+    @include tablet {
+      margin-top: 60px;
+      margin-bottom: 40px;
+    }
+    @include tablet-step2 {
+      margin-top: 80px;
+    }
 
     p {
+      margin: 0;
       font-size: $mediumHeader;
+      @include tablet {
+        font-size: 18pt;
+      }
+      @include tablet-step2 {
+        font-size: 19pt;
+      }
     }
   }
   form {

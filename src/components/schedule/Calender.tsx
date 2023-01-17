@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
 import { IBooking } from "../../interfaces/IBooking";
 import "../../styles/components/calender.scss";
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
+interface IDay {
+  day: Number;
+  book: String;
+}
+
 export const Calender = () => {
   const months = [
     "Jan",
@@ -17,6 +24,10 @@ export const Calender = () => {
     "Dec",
   ];
 
+  const [monthToday, setMonthToday] = useState("");
+  const [yearToday, setYearToday] = useState(0);
+  const [dayToday, setDayToday] = useState(0);
+
   const weekDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   const [weekDaysInOrder, setWeekDaysInOrder] = useState<String[]>([]);
 
@@ -30,7 +41,7 @@ export const Calender = () => {
   const [lastDayOfMonth, setLastDayOfMonth] = useState("");
   const firstDayOfMonth = 1;
 
-  const [allDaysOfMonth, setAllDaysOfMonth] = useState<number[]>([]);
+  const [allDaysOfMonth, setAllDaysOfMonth] = useState<IDay[]>([]);
 
   const [bookingsForMonth, setBookingsForMonth] = useState<IBooking[]>([]);
 
@@ -52,6 +63,26 @@ export const Calender = () => {
       getAllBookingsForCurrentMonth();
     }
   }, [month, year]);
+
+  useEffect(() => {
+    checkIfDayIsBooked();
+  }, [bookingsForMonth]);
+
+  const checkIfDayIsBooked = () => {
+    let copyOfDays = [...allDaysOfMonth];
+
+    bookingsForMonth.map((b) => {
+      copyOfDays.map((d) => {
+        if (+b.year === year && b.month === month && d.day === +b.day) {
+          let index = copyOfDays.indexOf(d);
+
+          let newD: IDay = { day: d.day, book: "F" };
+          copyOfDays.splice(index, 1, newD);
+          setAllDaysOfMonth(copyOfDays);
+        }
+      });
+    });
+  };
 
   const getWeekDaysInOrderByMonth = () => {
     let copyWeekDays = [...weekDays];
@@ -79,34 +110,44 @@ export const Calender = () => {
     let days = [];
 
     for (let i = 1; i <= +lastDayOfMonth; i++) {
-      days.push(i);
+      const day: IDay = { day: i, book: "+" };
+      days.push(day);
     }
     setAllDaysOfMonth(days);
   };
 
   const getCurrentDate = () => {
-    const date = new Date();
+    if (!month) {
+      const date = new Date();
 
-    let getCurrentMonth = date.getMonth();
+      let todaysDay = date.getDate();
+      setDayToday(todaysDay);
 
-    let currentMonth = months[getCurrentMonth];
+      let getCurrentMonth = date.getMonth();
 
-    setMonth(currentMonth);
-    setMonthAsNumber(getCurrentMonth);
-    let getCurrentYear = date.getFullYear();
-    setYear(getCurrentYear);
+      let currentMonth = months[getCurrentMonth];
 
-    let startDate = new Date(year, monthAsNumber, 1);
-    let firstWeekDay = startDate.toString().slice(0, -63);
+      setMonthToday(currentMonth);
 
-    setStartWeekDay(firstWeekDay);
+      setMonth(currentMonth);
+      setMonthAsNumber(getCurrentMonth);
+      let getCurrentYear = date.getFullYear();
+      setYear(getCurrentYear);
+      setYearToday(getCurrentYear);
+      let startDate = new Date(year, monthAsNumber, 1);
+      let firstWeekDay = startDate.toString().slice(0, -63);
 
-    let lastDate = new Date(year, monthAsNumber + 1, 0);
-    let lastWeekDay = lastDate.toString().slice(0, -63);
-    setEndWeekDay(lastWeekDay);
+      setStartWeekDay(firstWeekDay);
 
-    let lastDateDay = lastDate.toString().slice(8, -55);
-    setLastDayOfMonth(lastDateDay);
+      let lastDate = new Date(year, monthAsNumber + 1, 0);
+      let lastWeekDay = lastDate.toString().slice(0, -63);
+      setEndWeekDay(lastWeekDay);
+
+      let lastDateDay = lastDate.toString().slice(8, -55);
+      setLastDayOfMonth(lastDateDay);
+    } else {
+      return;
+    }
   };
 
   const getAllBookingsForCurrentMonth = async () => {
@@ -122,7 +163,6 @@ export const Calender = () => {
         body: JSON.stringify({ month, year }),
       }
     );
-
     const data = await rawResponse.json();
     setBookingsForMonth(data);
   };
@@ -139,6 +179,36 @@ export const Calender = () => {
       },
       body: JSON.stringify({ user: loggedInUser, year, month, day }),
     });
+
+    getAllBookingsForCurrentMonth();
+  };
+
+  const handleLeftArrow = () => {
+    let index = months.indexOf(month);
+
+    if (index - 1 === -1) {
+      let lastMonth = months[11];
+
+      setMonth(lastMonth);
+      setYear(year - 1);
+    } else {
+      let lastMonth = months[index - 1];
+      setMonth(lastMonth);
+    }
+  };
+
+  const handleRightArrow = () => {
+    let index = months.indexOf(month);
+
+    if (index + 1 === 12) {
+      let nextMonth = months[0];
+
+      setMonth(nextMonth);
+      setYear(year + 1);
+    } else {
+      let nextMonth = months[index + 1];
+      setMonth(nextMonth);
+    }
   };
 
   const WeekDaysHtml = weekDaysInOrder.map((d, i) => {
@@ -149,24 +219,44 @@ export const Calender = () => {
     );
   });
 
-  /*   const daysInMonthHtml = bookingsForMonth?.map((b) => {
-    allDaysOfMonth.map((d, i) => {
-      console.log(b.month);
-  +b.day === d ? return( <div className="dayInMonth" key={i}>   <div onClick={() => addBooking(d.toString())} className="bookDay">   +  </div>  <p>{d}</p> </div>) : return (  <div className="dayInMonth" key={i}> <p>{d}</p>   </div>  ) 
-      
-    });
+  const daysInMonthHtml = allDaysOfMonth.map((d, i) => {
+    return (
+      <div className="dayInMonth" key={i}>
+        <div
+          onClick={() => addBooking(d.day.toString())}
+          className={`${
+            d.book === "F" ||
+            (d.day < dayToday && month === monthToday && year === yearToday)
+              ? "hide"
+              : "bookDay"
+          }`}
+        >
+          {d.book}
+        </div>
+        <p>{d.day.toString()}</p>
+      </div>
+    );
   });
 
-  console.log(bookingsForMonth); */
   return (
     <section className="caldendarContainer">
       <section className="calender">
         <article className="monthNYear">
+          {month !== monthToday && year === yearToday && (
+            <KeyboardArrowLeftIcon
+              onClick={handleLeftArrow}
+            ></KeyboardArrowLeftIcon>
+          )}
+
           <p>{month}</p>
           <p>{year}</p>
+
+          <KeyboardArrowRightIcon
+            onClick={handleRightArrow}
+          ></KeyboardArrowRightIcon>
         </article>
         <article className="nameOfDays">{WeekDaysHtml}</article>
-        <article className="daysDisplayed">{}</article>
+        <article className="daysDisplayed">{daysInMonthHtml}</article>
       </section>
     </section>
   );

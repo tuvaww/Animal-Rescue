@@ -1,13 +1,31 @@
 @import "../mixins/variables";
+@import "../mixins//mixins";
 
 .scheduleMainContainer {
   margin-bottom: 100px;
   .headerContainer {
-    padding-left: 30px;
-    margin-bottom: 50px;
+    /* padding-left: 30px;
+    margin-bottom: 50px; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
 
+    @include tablet {
+      margin-top: 60px;
+      margin-bottom: 100px;
+    }
+    @include tablet-step2 {
+      margin-top: 80px;
+    }
     p {
       font-size: $mediumHeader;
+
+      @include tablet {
+        font-size: 18pt;
+      }
+      @include tablet-step2 {
+        font-size: 19pt;
+      }
     }
   }
 }

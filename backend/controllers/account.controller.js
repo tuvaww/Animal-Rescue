@@ -8,7 +8,6 @@ exports.createUser = async (req, res) => {
     const password = req.body.password;
 
     const findUser = await User.findOne({ email: email });
-    console.log("findUser", findUser);
 
     if (findUser) {
       res.sendStatus(403);
@@ -35,5 +34,17 @@ exports.login = async (req, res) => {
     }
   } catch (err) {
     console.log("error", err);
+  }
+};
+
+exports.getUserData = async (req, res) => {
+  try {
+    const id = req.body.id;
+
+    const findUser = await User.findOne({ _id: id });
+
+    res.status(200).send(findUser);
+  } catch (err) {
+    console.log(err);
   }
 };

@@ -9,6 +9,7 @@ import { Register } from "./views/Register";
 import { Login } from "./views/Login";
 import { Provider } from "react-redux";
 import Store from "./redux/Store";
+import { Account } from "./components/Account";
 
 function App() {
   return (

@@ -5,12 +5,14 @@ import { useEffect, useState } from "react";
 import "../../styles/layout/Header.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { IState } from "../../redux/models/IState";
+import { Account } from "../Account";
 
 export const Header = () => {
   const [isHovering, setIsHovering] = useState(0);
   const [openMenu, setOpenMenu] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  const [openAccount, setOpenAccount] = useState(false);
   const token = useSelector((state: IState) => state.session.value);
 
   const dispatch = useDispatch();
@@ -25,7 +27,7 @@ export const Header = () => {
 
   const loggedInLinks = [
     { url: "/Donate", name: "Donate", id: 6 },
-    { url: "/Account", name: "Account", id: 7 },
+    { name: "Account", id: 7 },
   ];
 
   useEffect(() => {
@@ -51,6 +53,12 @@ export const Header = () => {
     }
   };
 
+  const handleOpenAccount = (link: string) => {
+    if (link === "Account") {
+      setOpenAccount(true);
+    }
+  };
+
   const getLinkHTML = links.map((link) => {
     return (
       <div
@@ -64,7 +72,7 @@ export const Header = () => {
         key={link.id}
       >
         <a
-          href={link.url}
+          href={link.url && link.url}
           className={`${isHovering === link.id ? "hoverLink" : "link"} `}
         >
           {link.name}
@@ -86,6 +94,7 @@ export const Header = () => {
         key={link.id}
       >
         <a
+          onClick={() => handleOpenAccount(link.name)}
           href={link.url}
           className={`${isHovering === link.id ? "hoverLink" : "link"} `}
         >
@@ -97,6 +106,9 @@ export const Header = () => {
 
   return (
     <header className="headerMainContainer">
+      <div className={`${openAccount ? "account" : "hide"}`}>
+        <Account />
+      </div>
       <div className="headerName">
         <h1>Animal Rescue</h1>
 

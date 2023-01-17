@@ -8,6 +8,7 @@ exports.book = async (req, res) => {
     const day = req.body.day;
 
     await Bookings.create({ userId: user, year, month, day });
+    res.sendStatus(200);
   } catch (err) {
     console.log(err);
   }
@@ -19,6 +20,18 @@ exports.getAllBookings = async (req, res) => {
     const month = req.body.month;
 
     const bookings = await Bookings.find({ year: year, month: month });
+
+    res.status(200).send(bookings);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+exports.getBookingByUser = async (req, res) => {
+  try {
+    const userId = req.body.id;
+
+    const bookings = await Bookings.find({ userId });
 
     res.status(200).send(bookings);
   } catch (err) {
