@@ -54,6 +54,10 @@
         background-color: rgba($orange, 0.8);
         border-radius: 20px;
         box-shadow: $boxShadowSoft;
+
+        .cardHeader {
+          font-size: 13pt;
+        }
       }
       .cardSmallContainerFirst,
       .cardSmallContainerSecond {
@@ -62,6 +66,10 @@
         box-sizing: border-box;
         height: 150px;
         border-radius: 20px;
+
+        .cardHeader {
+          font-size: 13pt;
+        }
       }
 
       .cardSmallContainerFirst {

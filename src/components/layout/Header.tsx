@@ -14,8 +14,8 @@ export const Header = () => {
 
   const [openAccount, setOpenAccount] = useState(false);
   const token = useSelector((state: IState) => state.session.value);
-
   const dispatch = useDispatch();
+  const url = window.location.pathname;
 
   const links = [
     { url: "/", name: "Home", id: 1 },
@@ -23,11 +23,12 @@ export const Header = () => {
     { url: "/Register", name: "Register", id: 3 },
     { url: "/Adopt", name: "Adopt", id: 4 },
     { url: "/Schedule", name: "Schedule", id: 5 },
+    { url: "/Checkout", name: "Checkout", id: 6 },
   ];
 
   const loggedInLinks = [
-    { url: "/Donate", name: "Donate", id: 6 },
-    { name: "Account", id: 7 },
+    { url: "/Donate", name: "Donate", id: 7 },
+    { name: "Account", id: 8 },
   ];
 
   useEffect(() => {
@@ -59,13 +60,17 @@ export const Header = () => {
     }
   };
 
+  const closeAccount = (set: boolean) => {
+    setOpenAccount(set);
+  };
+
   const getLinkHTML = links.map((link) => {
     return (
       <div
         onMouseEnter={() => handleMouseEnter(link.id)}
         onMouseLeave={handleMouseLeave}
         className={`${
-          isHovering === link.id
+          isHovering === link.id || url === link.url
             ? "hoverHeaderLinkContainer"
             : "headerLinkContainer"
         } `}
@@ -73,7 +78,9 @@ export const Header = () => {
       >
         <a
           href={link.url && link.url}
-          className={`${isHovering === link.id ? "hoverLink" : "link"} `}
+          className={`${
+            isHovering === link.id || url === link.url ? "hoverLink" : "link"
+          } `}
         >
           {link.name}
         </a>
@@ -86,17 +93,19 @@ export const Header = () => {
       <div
         onMouseEnter={() => handleMouseEnter(link.id)}
         onMouseLeave={handleMouseLeave}
-        className={`${
-          isHovering === link.id
+        className={`${isLoggedIn ? "loggedInLink" : "hide"} ${
+          isHovering === link.id || url === link.url
             ? "hoverHeaderLinkContainer"
             : "headerLinkContainer"
-        } `}
+        }  `}
         key={link.id}
       >
         <a
           onClick={() => handleOpenAccount(link.name)}
           href={link.url}
-          className={`${isHovering === link.id ? "hoverLink" : "link"} `}
+          className={`${isHovering === link.id ? "hoverLink" : "link"} ${
+            url === link.url && "hoverHeaderLinkContainer"
+          } `}
         >
           {link.name}
         </a>
@@ -107,7 +116,7 @@ export const Header = () => {
   return (
     <header className="headerMainContainer">
       <div className={`${openAccount ? "account" : "hide"}`}>
-        <Account />
+        <Account closeAccount={closeAccount} />
       </div>
       <div className="headerName">
         <h1>Animal Rescue</h1>
@@ -128,7 +137,7 @@ export const Header = () => {
         <article className="hamburgerMenuModal">
           <div className="closeMenuButton">
             <Close
-              sx={{ cursor: "pointer" }}
+              sx={{ cursor: "pointer", color: "gray" }}
               onClick={() => handleModalMenu("close")}
             ></Close>
           </div>

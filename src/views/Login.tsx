@@ -35,7 +35,7 @@ export const Login = () => {
 
     if (rawResponse.status === 200) {
       setTimeout(() => {
-        setStore(data.token);
+        setStore(data.token, data.id);
 
         setStartLoader(false);
         setEmail("");
@@ -50,8 +50,10 @@ export const Login = () => {
     }
   };
 
-  const setStore = (data: string) => {
+  const setStore = (data: string, id: string) => {
     dispatch(add(data));
+
+    sessionStorage.setItem("User", id);
   };
 
   const handleEmail = (e: ChangeEvent<HTMLInputElement>) => {

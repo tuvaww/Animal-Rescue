@@ -3,10 +3,23 @@ import { useParams } from "react-router-dom";
 import { IAnimal } from "../../interfaces/IAnimal";
 import { ImageCarousel } from "../reusables/ImageCarousel";
 import "../../styles/components/animals/animalDetails.scss";
-
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 export const AnimalDetails = () => {
   const { id } = useParams();
   const [animal, setAnimal] = useState<IAnimal>();
+
+  const [animalIsSaved, setAnimalIsSaved] = useState(false);
+
+  useEffect(() => {
+    let listFromStorage = JSON.parse(sessionStorage.getItem("Animals") || "[]");
+
+    listFromStorage.map((a: IAnimal) => {
+      if (a.id === animal?.id) {
+        setAnimalIsSaved(true);
+      }
+    });
+  }, []);
   useEffect(() => {
     getAnimal();
   }, [id]);
@@ -17,6 +30,35 @@ export const AnimalDetails = () => {
     const data = await response.json();
     setAnimal(data);
   };
+
+  const addToAdoptList = () => {
+    let listFromStorage = JSON.parse(sessionStorage.getItem("Animals") || "[]");
+
+    let copy: IAnimal[] = [...listFromStorage];
+
+    if (animal) {
+      copy.push(animal);
+
+      sessionStorage.setItem("Animals", JSON.stringify(copy));
+      setAnimalIsSaved(true);
+    }
+  };
+
+  const removeFromAdoptList = () => {
+    let listFromStorage = JSON.parse(sessionStorage.getItem("Animals") || "[]");
+
+    let copy: IAnimal[] = [...listFromStorage];
+
+    if (animal) {
+      let index = copy.indexOf(animal);
+
+      copy.splice(index, 1);
+
+      sessionStorage.setItem("Animals", JSON.stringify(copy));
+      setAnimalIsSaved(false);
+    }
+  };
+
   return (
     <section className="animalDetailsContainer">
       <div className="nameContainer">
@@ -25,8 +67,7 @@ export const AnimalDetails = () => {
       <ImageCarousel
         imgUrl={animal?.img.length ? animal?.img : []}
       ></ImageCarousel>
-      {/*       <section className="detailsContainer">
-       */}{" "}
+
       <article className="informartion">
         <div>
           <p>{animal?.age} years</p>
@@ -53,8 +94,22 @@ export const AnimalDetails = () => {
       <article className="descContainer">
         <span>{animal?.description}</span>
       </article>
-      {/*       </section>
-       */}{" "}
+
+      <article className={`${!animalIsSaved ? "addContainer" : "hide"}`}>
+        <span>Add {animal?.name} to your list to book a meeting ! </span>
+        <AddCircleOutlineIcon
+          onClick={addToAdoptList}
+          sx={{ fontSize: "32pt", color: "#ffb4b4", cursor: "pointer" }}
+        ></AddCircleOutlineIcon>
+      </article>
+
+      <article className={`${animalIsSaved ? "removeContainer" : "hide"}`}>
+        <span>Remove {animal?.name} from your list ! </span>
+        <RemoveCircleOutlineIcon
+          onClick={removeFromAdoptList}
+          sx={{ fontSize: "32pt", color: "#ffb4b4", cursor: "pointer" }}
+        ></RemoveCircleOutlineIcon>
+      </article>
     </section>
   );
 };

@@ -108,15 +108,13 @@
         margin-top: 40px;
         display: flex;
         flex-direction: row;
-        gap: 1px;
-        margin-right: 1px;
+        margin-right: 5px;
+        font-size: 10pt;
+        gap: 2px;
       }
 
       @include tablet-step2 {
-        font-size: 14pt;
-
-        gap: 5px;
-        margin-right: 5px;
+        font-size: 12pt;
       }
       @include desktop {
         font-size: 15pt;
@@ -133,6 +131,11 @@
       .link {
         color: $purple;
         text-decoration: none;
+        font-size: 10pt;
+
+        @include tablet-step2 {
+          font-size: 12pt;
+        }
       }
     }
 
@@ -143,15 +146,11 @@
         margin-top: 40px;
         display: flex;
         flex-direction: row;
-        gap: 1px;
-        margin-left: 1px;
-      }
-      @include tablet-step2 {
-        font-size: 14pt;
-
-        gap: 5px;
+        gap: 2px;
         margin-left: 5px;
+        font-size: 10pt;
       }
+
       @include desktop {
         font-size: 15pt;
 
@@ -170,7 +169,7 @@
 .hoverHeaderLinkContainer {
   background-color: $purple;
   border-radius: 20px;
-  width: 90px;
+  width: 70px;
   height: 23px;
   display: flex;
   justify-content: center;
@@ -179,30 +178,39 @@
   .hoverLink {
     color: white;
     text-decoration: none;
+    font-size: 10pt;
+
+    @include tablet-step2 {
+      font-size: 12pt;
+    }
   }
 
   @include tablet-step2 {
-    width: 100px;
+    width: 85px;
     padding: 1px;
   }
 }
 .headerLinkContainer {
-  width: 90px;
+  width: 70px;
   height: 23px;
   border-radius: 20px;
-
   display: flex;
   justify-content: center;
   align-items: center;
 
   @include tablet-step2 {
-    width: 100px;
+    width: 85px;
     padding: 1px;
   }
 
   .link {
     color: $purple;
     text-decoration: none;
+    font-size: 10pt;
+
+    @include tablet-step2 {
+      font-size: 12pt;
+    }
   }
 }
 

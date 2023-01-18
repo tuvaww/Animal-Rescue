@@ -3,15 +3,20 @@
 
 .AccountContainer {
   overflow-y: scroll;
-  width: 60%;
+  width: 300px;
   height: 100vh;
   position: fixed;
   right: 0;
   top: 0;
-  // border: 1px solid red;
   z-index: 10000;
   background-color: white;
   box-shadow: $boxShadowSoft;
+
+  .closeContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin: 5px 5px 0 0;
+  }
 
   .infoContainer {
     margin-top: 50px;
@@ -21,6 +26,14 @@
     flex-direction: column;
     align-items: center;
     gap: 20px;
+
+    .nameContainer {
+      font-size: 15pt;
+    }
+
+    .emailC {
+      font-size: 9pt;
+    }
   }
 
   .bookingsContainer {
@@ -32,6 +45,27 @@
     justify-content: center;
     gap: 10px;
 
+    .handleBookings {
+      width: 100%;
+
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .noBookingsContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      span {
+        font-size: 10pt;
+      }
+      a {
+        color: $purple;
+      }
+    }
+
     .bookingContainer {
       width: 120px;
       background-color: rgba($purple, 0.5);
@@ -41,6 +75,22 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      position: relative;
+
+      .remove {
+        position: absolute;
+        right: -2px;
+        top: -7px;
+        height: 15px;
+        width: 15px;
+        border-radius: 50%;
+        background-color: rgba(255, 0, 0, 0.647);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: black;
+        box-shadow: $boxShadowSoft;
+      }
 
       span {
         padding: 0;
@@ -68,4 +118,8 @@
       border: none;
     }
   }
+}
+
+.hide {
+  display: none;
 }

@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const Bookings = require("../models/Booking");
 
 exports.createUser = async (req, res) => {
   try {
@@ -44,6 +45,20 @@ exports.getUserData = async (req, res) => {
     const findUser = await User.findOne({ _id: id });
 
     res.status(200).send(findUser);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+exports.delete = async (req, res) => {
+  try {
+    const id = req.body.userId;
+
+    await Bookings.deleteMany({ userId: id });
+
+    await User.deleteOne({ _id: id });
+
+    res.sendStatus(200);
   } catch (err) {
     console.log(err);
   }

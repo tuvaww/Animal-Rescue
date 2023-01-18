@@ -22,7 +22,6 @@
 
     @include tablet-up {
       margin-bottom: 50px;
-      //text-align: center;
     }
     p {
       font-weight: bolder;
@@ -45,17 +44,6 @@
       width: 50%;
     }
   }
-
-  /*  .detailsContainer {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    @include tablet-up {
-      width: 50%;
-      justify-content: flex-start;
-    } */
 
   .informartion {
     width: 100%;
@@ -118,5 +106,18 @@
       width: 40%;
     }
   }
-  /*  } */
+
+  .addContainer,
+  .removeContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $yellow;
+    box-shadow: $boxShadowSoft;
+    border-radius: 20px;
+    padding: 20px;
+    gap: 20px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
 }

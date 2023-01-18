@@ -56,8 +56,6 @@ export const Home = () => {
             </div>
           </article>
         </section>
-        {/*       <section className="animalsForAdoptionContainer">{fastViewHtml}</section>
-         */}{" "}
       </section>
       <Footer></Footer>
     </main>

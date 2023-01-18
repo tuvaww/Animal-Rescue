@@ -10,6 +10,7 @@ import { Login } from "./views/Login";
 import { Provider } from "react-redux";
 import Store from "./redux/Store";
 import { Account } from "./components/Account";
+import { Checkout } from "./views/Checkout";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/Schedule" element={<Schedule />}></Route>
             <Route path="/Register" element={<Register />}></Route>
             <Route path="/Login" element={<Login />}></Route>
+            <Route path="/Checkout" element={<Checkout></Checkout>}></Route>
           </Route>
         </Routes>
       </BrowserRouter>
