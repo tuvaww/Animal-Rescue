@@ -1,5 +1,9 @@
 # Getting Started with Create React App
 
+To run this page you will need a dotenv file with:
+LOGGED_IN_TOKEN - A token that will be used when user is logged in
+DB_CONNECTION_KEY - Connection key to mongoDB atlas
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
