@@ -29,10 +29,6 @@ export const ImageCarousel = (props: IImageCarouselProps) => {
     [theme.breakpoints.up("md")]: {
       width: "70vw",
     },
-
-    /*  [theme.breakpoints.up("lg")]: {
-      width: "70vw",
-    }, */
   }));
 
   return (

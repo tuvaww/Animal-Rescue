@@ -72,37 +72,27 @@ export const Checkout = () => {
     sessionStorage.setItem("Animals", JSON.stringify("[]"));
   };
 
-  /*   const getAnimalsHTML = () => {
-    if (animals.length) {
-      return animals?.map((a) => {
-        return (
-          <article className="itemContainer">
-            <div className="imgContainer">
-              <img src={require(`../assets/${a.img[0]}`)} alt="a.name" />
-            </div>
+  const animalsHTML = animals.map((a, i) => {
+    return (
+      <article className="itemContainer" key={a.id}>
+        <div className="imgContainer">
+          <img src={require(`../assets/${a.img[0]}`)} alt={a.name} />
+        </div>
 
-            <p>{a.name}</p>
-            <p>{a.breed}</p>
+        <p>{a.name}</p>
+        <p>{a.breed}</p>
 
-            <DeleteForeverIcon
-              sx={{
-                cursor: "pointer",
-                color: "rgba(255, 0, 0, 0.647)",
-                fontSize: "20pt",
-              }}
-              onClick={() => removeFromAdoptList(a)}
-            ></DeleteForeverIcon>
-          </article>
-        );
-      });
-    } else {
-      return (
-        <section className="noAnimals">
-          <span>You have not added any animals</span>
-        </section>
-      );
-    }
-  }; */
+        <DeleteForeverIcon
+          sx={{
+            cursor: "pointer",
+            color: "rgba(255, 0, 0, 0.647)",
+            fontSize: "20pt",
+          }}
+          onClick={() => removeFromAdoptList(a)}
+        ></DeleteForeverIcon>
+      </article>
+    );
+  });
 
   return (
     <main className="checkoutContainer">
@@ -113,7 +103,14 @@ export const Checkout = () => {
           you to see the animals you would like to adopt !
         </span>
       </section>
-      <section className="animalsContainer">{/* getAnimalsHTML */}</section>
+      <section className={`${animals.length ? "animalsContainer" : "hide"}`}>
+        {animalsHTML}
+      </section>
+      <section className={`${!animals.length ? "noAnimalsContainer" : "hide"}`}>
+        <span>You have not added any animals to your list.</span>
+        <span>Check them out here:</span>
+        <a href="/Adopt">Adopt</a>
+      </section>
 
       <section className="formContainer">
         <form onSubmit={(e) => e.preventDefault()}>
@@ -166,7 +163,7 @@ export const Checkout = () => {
       </section>
 
       <section className="buttonContainer">
-        <button type="button" onClick={sendRequest}>
+        <button type="button" onClick={sendRequest} disabled={!animals.length}>
           Proceed
         </button>
       </section>

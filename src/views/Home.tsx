@@ -1,15 +1,14 @@
 import "../styles/views/home.scss";
 import PetsIcon from "@mui/icons-material/Pets";
 import SavingsIcon from "@mui/icons-material/Savings";
-import { AnimalFastView } from "../components/animals/AnimalFastView";
 import { Header } from "../components/layout/Header";
 import { Footer } from "../components/layout/Footer";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { IState } from "../redux/models/IState";
 export const Home = () => {
-  const howManyFastViews = [1, 2, 3];
-
-  const fastViewHtml = howManyFastViews.map((i) => {
-    return <AnimalFastView></AnimalFastView>;
-  });
+  const token = useSelector((state: IState) => state.session.value);
+  const dispatch = useDispatch();
 
   return (
     <main className="mainContainer">
@@ -31,7 +30,7 @@ export const Home = () => {
           <article className="cardSmallContainerFirst">
             <h5 className="cardHeader">Donate to help</h5>
             <div className="textContainer">
-              <a href="/Adopt">
+              <a href={token ? "/Donate" : "/Login"}>
                 <SavingsIcon sx={{ fontSize: "60pt" }}></SavingsIcon>
               </a>
             </div>

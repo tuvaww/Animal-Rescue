@@ -28,10 +28,15 @@ exports.login = async (req, res) => {
   try {
     const findUser = await User.findOne({ email: email });
     const loggedInToken = process.env.LOGGED_IN_TOKEN;
-    if (findUser.password === pass) {
-      res.status(200).send({ token: loggedInToken, id: findUser._id });
+
+    if (findUser) {
+      if (findUser.password === pass) {
+        res.status(200).send({ token: loggedInToken, id: findUser._id });
+      } else {
+        res.status(401).send("401");
+      }
     } else {
-      res.sendStatus(404);
+      res.status(401).send("401");
     }
   } catch (err) {
     console.log("error", err);

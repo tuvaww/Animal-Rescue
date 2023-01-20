@@ -21,15 +21,8 @@ export const Selector = (props: ISelectorProps) => {
 
   const handleSelect = (selected: string, i: number) => {
     if (selectedFilter === selected) {
-      /*   let removeSelected = selectedFilter.filter((item) => {
-        return item !== selected;
-      }); */
-
       setSelectedFilter("");
     } else {
-      /*  let copy = [...selectedFilter];
-      copy.splice(i, 0, selected); */
-
       setSelectedFilter(selected);
     }
     props.getFilters(selected);

@@ -31,12 +31,12 @@ export const Account = (props: IAccountProps) => {
   const [myBookings, setMyBookings] = useState<IBooking[]>([]);
 
   useEffect(() => {
-    if (!user && userId) {
+    if (userId) {
       setUser(userId);
       getUserData();
       getBookings();
     }
-  }, [userId, myBookings]);
+  }, [userId]);
 
   const getUserData = async () => {
     const rawResponse = await fetch("http://localhost:8000/account/get-user", {

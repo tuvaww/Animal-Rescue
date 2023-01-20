@@ -32,7 +32,6 @@ export const Login = () => {
     });
 
     const data = await rawResponse.json();
-
     if (rawResponse.status === 200) {
       setTimeout(() => {
         setStore(data.token, data.id);

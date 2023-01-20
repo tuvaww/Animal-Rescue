@@ -103,8 +103,8 @@ export const Header = () => {
         <a
           onClick={() => handleOpenAccount(link.name)}
           href={link.url}
-          className={`${isHovering === link.id ? "hoverLink" : "link"} ${
-            url === link.url && "hoverHeaderLinkContainer"
+          className={`${
+            isHovering === link.id || url === link.url ? "hoverLink" : "link"
           } `}
         >
           {link.name}
@@ -145,9 +145,6 @@ export const Header = () => {
           {getLoggedInLinksHTML}
         </article>
       </section>
-      {/*   <ShoppingBasketIcon
-        sx={{ margin: "10px", position: "absolute", right: "0" }}
-      /> */}
 
       <section className="headerLinksConatiner">
         <article className="mainLinks">{getLinkHTML}</article>

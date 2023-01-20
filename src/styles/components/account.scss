@@ -67,9 +67,10 @@
     }
 
     .bookingContainer {
-      width: 120px;
+      width: 100px;
       background-color: rgba($purple, 0.5);
-      height: 30px;
+      height: 20px;
+      font-size: 10pt;
       border-radius: 20px;
       box-shadow: $boxShadowSoft;
       display: flex;

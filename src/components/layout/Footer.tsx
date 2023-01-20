@@ -19,15 +19,15 @@ export const Footer = () => {
       ></PetsIcon>
       <section className="footerInfoContainer">
         <article className="footerLinksContainer">
-          <a href="">About us</a>
+          <a href="/">About us</a>
           <div className="divider"></div>
-          <a href="">Help at the shelter</a>
+          <a href="/Schedule">Help at the shelter</a>
           <div className="divider"></div>
-          <a href="">Cats</a>
+          <a href="/Adopt">Cats</a>
           <div className="divider"></div>
-          <a href="">Dogs</a>
+          <a href="/Adopt">Dogs</a>
           <div className="divider"></div>
-          <a href="">Animals</a>
+          <a href="/Adopt">Animals</a>
         </article>
 
         <article className="footerInformationContainer">

@@ -1,11 +1,9 @@
 @import "../mixins/variables";
-@import "../mixins//mixins";
+@import "../mixins/mixins";
 
 .scheduleMainContainer {
   margin-bottom: 100px;
   .headerContainer {
-    /* padding-left: 30px;
-    margin-bottom: 50px; */
     width: 100%;
     display: flex;
     justify-content: center;
@@ -27,5 +25,14 @@
         font-size: 19pt;
       }
     }
+  }
+
+  .notPermitted {
+    width: 100%;
+    height: 100%;
+  }
+
+  .hide {
+    display: none;
   }
 }

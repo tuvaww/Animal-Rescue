@@ -1,5 +1,6 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { validateEmail } from "../services/Validation";
 import "../styles/layout/form.scss";
 
 export const Register = () => {
@@ -43,13 +44,6 @@ export const Register = () => {
   useEffect(() => {
     validateLength();
   }, [firstName, lastName, email, repeatEmail, password]);
-
-  const validateEmail = (email: string) => {
-    var emailRegex =
-      /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i;
-
-    return emailRegex.test(email);
-  };
 
   const checkIfEmailsMatch = () => {
     if (email.length > 5 && repeatEmail.length > 5) {
